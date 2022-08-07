@@ -1,0 +1,245 @@
+
+.nav {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    z-index: 100;
+    
+    &.sticky {
+    background-color: $white;
+    padding-bottom: .6rem;
+
+    a {
+
+        color: $textPrimary;
+    }
+
+    }
+
+    .logo {
+      position: absolute;
+      left: 1rem;
+      width: 45px;
+      height: 45px;
+      padding-top: .3rem;
+      padding-left: .2rem;
+      border-radius: 8px;
+      background: $Gradient;
+    } 
+
+    .toggler {
+      display: none;
+      position: absolute;
+      right: .5rem;
+      top:1.3rem;
+
+      .menu {
+        width: 26px;
+        height: 40px;
+
+        span {
+              display: block;
+              width: 100%;
+              height: 2px;
+              background-color: #333;
+              transform-origin: 1px;
+              transition: $transition;
+              
+
+              &:not(:last-child) {
+                margin-bottom: 7px;
+                
+              }
+          }
+
+
+          &.open {
+              span:first-child {
+                  transform: rotate(45deg);
+              }
+              span:nth-child(2) {
+                opacity: 0;
+              }
+              span:last-child {
+                  transform: rotate(-45deg);
+              }
+          }
+      }
+    }
+
+    ul {
+     width: 50%;
+     justify-content: space-between;
+     margin-right: 1.5rem;
+
+     li {
+         font-weight: 600;
+         font-size: 1.3rem;
+         
+
+        a {
+            display: inline-block;
+            color: $white;
+            position: relative;
+            transition: $transition;
+            padding-bottom: .6rem;
+            transition: $transition;
+
+            &:hover {
+                transform: rotate(10deg);
+            }
+
+            &.active {
+ 
+            &::before {
+                content: '';
+                position: absolute;
+                width: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 0;
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+                background: $textPrimary;
+                height: 10px;
+            }
+        }
+            
+        }
+
+      
+     }
+    }
+
+}
+
+
+// mobile Navigation
+.mobi-nav {
+    position: fixed;
+    min-height: 100vh;
+    inset:0 0 0 40%;
+    z-index: 90;
+    display: none;
+    justify-content: center;
+    background: hsla(0, 0%, 0%, 0.5);
+    transform: translateX(100%);
+    opacity: 0;
+    transition: $transition;
+    border-radius: math.div($radius, 8);
+
+    &.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+        padding: 2rem;
+
+         a {
+            text-decoration: none;
+            color: $white;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: $transition;
+
+            &:hover {
+                color: #333;
+            }
+        }
+    }
+} 
+
+@supports (backdrop-filter: blur(1rem)) {
+    .mobi-nav {
+        background: hsla(0, 0%, 100%, 0.1);
+        backdrop-filter: blur(1rem);
+    }
+}
+
+  // Header
+  .header {
+
+    margin-top: 10rem;
+
+    &__intro {
+      margin-top: 2.3rem; 
+      padding: 0 1.4rem;
+        
+    }
+    
+
+    .highlight {
+        color: $clrSecondary;
+        
+      }
+    .btn-container {
+        width: 100%;
+        justify-content: center;
+        margin-top: 2em;
+        gap: 1rem;
+        flex-wrap: wrap;
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            background: linear-gradient(45deg, $red, #ade99f, #c0ecf9);
+            background-position: left;
+            background-size: 400%;
+            font-weight: 500;
+            color: white;
+    
+            img {
+                display: inline-block;
+                width: 1.2rem;
+                height: 1.2rem;
+                margin-left: .2rem;
+            }
+
+            &:hover {
+                background-position: right;
+            }
+
+        }
+
+        .coffee-btn {
+            background:linear-gradient(45deg, $yellow, #d1d7f8, #e5f7e1);
+            background-position: left;
+            background-size: 400%;
+            color: black; 
+
+            
+        }
+    }
+
+    
+}
+     
+@media (max-width: 700px) {
+
+    .nav {
+        background-color: $white;
+        justify-content: space-between;
+        flex-direction: column;
+        ul {
+            opacity: 0;
+           
+    }
+
+    .toggler {
+        display: block;
+      }
+}
+
+.mobi-nav {
+    display: block;
+}
+
+}

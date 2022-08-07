@@ -1,0 +1,434 @@
+@use "sass:math";
+@import 'variables';
+@import 'defaults';
+@import 'nav';
+
+
+canvas {
+    position: fixed;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 50;
+  }
+   
+  .hero {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .flex {
+    display: flex;
+    align-items: center;
+  
+  }
+  
+ 
+// Main Section 
+  .main {
+    padding: 1rem;
+    gap: 1.5rem;
+    
+    &__title {
+        text-align: left;
+        margin: 1.5rem;
+      }
+
+      &__container {
+        width: 100%;
+        background-color: $clrPrimary;
+        padding: 1rem;
+        margin-left: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+
+        .card {
+            transform: rotate(8deg);
+            transition: transform 0.4s ease;
+
+            &:hover, &:focus {
+              transform: scale(.9);
+            }
+
+            h2 {
+                letter-spacing: .1rem;
+                color:$white;
+                font-family: $font-secondary;
+              }
+
+              svg {
+                width: 10rem;
+                height: 8rem;
+              }
+          }
+      }
+
+  }
+
+  // Projects
+
+  .projects {
+    background: $clrPrimary; 
+    padding-bottom: 2rem;
+    margin-left: 1.5rem;
+    padding-inline: 2rem;
+   
+    h2 {
+      margin-bottom: 2rem;
+    }
+
+  .collage {
+    
+     display: grid;
+     grid-template-columns: repeat(2,minmax(200px, 1fr));
+     grid-gap: 2rem;
+     margin: 0 auto;
+
+     @media (max-width: 900px) {
+        grid-template-columns: 100%;
+     }
+  }
+    .project {
+      position: relative;
+      background-color: $white;
+      flex-direction: column;
+      border-radius: math.div($radius , 10);
+      color: $textPrimary;
+
+      .banner {
+        width: 100%;
+        height: 200px;
+        aspect-ratio: 2 / 1;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+        border-radius: math.div($radius , 10);
+
+        .link {
+          border-radius: math.div($radius , 10);
+          background-color: rgba(0, 0, 0, 0.7);
+          width: 100%;
+          height: 100%;
+          gap: 1.5rem;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 0.2s ease-in;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          a {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: $clrSecondary;
+            background-color: $white;
+            padding: .2rem 1rem;
+            border-radius: $radius;
+            
+            &:hover {
+              color: $clrPrimary;
+            }
+          }
+        }
+      }
+
+      .tags {
+        margin-bottom: 2rem;
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        overflow-wrap: break-word;
+        color: $white;
+
+
+        .tag {
+          background-color: $clrPrimary;
+          padding: .4rem 1rem;
+          font-family: $font-secondary;
+          text-transform: uppercase;
+          border-radius: $radius;
+        }
+      }
+
+      .info {
+        font-size: 1.3rem;
+        font-style: italic;
+        font-weight: 500;
+        padding-inline: .7em;
+        text-shadow: 0px 2px 6px rgba(0,0,0,0.42);
+        margin-block: 1rem;
+
+        span {
+          color: $clrPrimary;
+          
+        }
+      }
+
+      p {
+        font-size: small;
+        justify-self: flex-end;
+        font-weight: 300;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  // Blog
+  .blogs {
+    background: $clrPrimary;
+    margin: 0 1.5rem;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 2em;
+    padding-inline: 2em;
+
+     h2 {
+      padding: 0 .5rem; 
+
+    }
+
+    .grid {
+      
+    display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+     grid-gap: 3rem;
+    }
+
+    .blog {
+      color: #333;
+      background: $white;
+      border-radius: math.div($radius , 10);
+      padding-bottom: .5rem;
+
+      .creds {
+          margin-block: 1rem;
+          gap: .8rem;
+          padding-left: 1.4rem;
+        
+          .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+          }
+
+        }
+        
+        .time {
+          text-align: left;
+          margin-left: 1rem;
+
+        }
+        h3 {
+        margin-bottom: 1rem;
+        padding: 0 .8rem;
+      }
+
+      a {
+        color: $textPrimary;
+        font-weight: 600;
+        text-decoration: none;
+
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      
+    }
+  }
+  
+  // Contact Form
+  .contact {
+    flex-direction: column;
+    background-color: $clrPrimary;
+    margin-left: 1.5rem;
+      
+     h1 {
+       
+       color: $clrSecondary;
+     }
+
+     p {
+      padding: 1.5rem 4rem;
+      line-height: 1.7;
+     }
+    
+    form {
+      width: 65%;
+      padding: 1rem;
+    }
+  
+      .row {
+          width: 100%;
+          display: flex;
+  
+          .input50 {
+              width: 50%;
+              margin: 0 10px;
+          }
+  
+          .input100 {
+              width: 100%;
+              margin: 0 10px;
+          }
+  
+          input,textarea {
+              width: 100%;
+              font-family: $font-primary;
+              padding: 10px;
+              border-radius: math.div($radius , 10);
+              outline: none;
+              font-size: 1rem;
+              font-weight: 300; 
+              margin: 10px 0;
+              resize: none;
+
+              &:focus {
+                box-shadow: 2px 5px 10px -5px $clrSecondary;
+              }
+  
+          }
+
+          
+  
+          textarea {
+              height: 8rem;
+          }
+  
+          /* From uiverse.io by @adamgiebl */
+.form-btn {
+  text-transform: uppercase;
+  margin: auto;
+  color: $white;
+  background: $clrSecondary;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+ }
+
+  svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  &:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+  }
+  
+  &:hover span {
+    transform: translateX(5em);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+
+ }
+ 
+  
+      }
+  }
+
+  
+  .footer {
+    overflow: hidden;
+    margin-top: 5rem;
+    font-family: "Ubuntu Condensed", sans-serif;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    bottom: 0;
+    color: hsl(210, 55%, 15%);
+
+    p {
+      margin-bottom: .5rem;
+      font-size: 1.4rem;
+    }
+
+    @media (max-width : 500px) {
+      p {
+        font-size: 1.1rem;
+      }
+    }
+    .social-icons {
+        margin-right: 2rem;
+        gap: 2.5rem;
+
+        a {
+            display: inline-block;
+            font-size: 2rem;
+            transform-style: preserve-3d;
+            transition: all 0.3s linear;
+
+            &:hover {
+                transform: scale(1.2);
+            }
+
+          }
+    }
+
+      .top-btn {
+        font-size: 3.5rem;
+        animation: shake 0.3s infinite forwards;
+        cursor: pointer;
+    }
+
+    .wave {
+        z-index: -1;
+        position: absolute;
+        bottom: 0;
+        top:0;
+        height: 100%;
+        width: 100%;
+    }
+
+  }
+  
+  
+  @keyframes shake {
+    0%, 100% {
+      
+     transform: translateY(-8px);
+    }
+
+    90% {
+      
+      transform: translateY(0);
+    }
+  }
+
+
+  @media (max-width:600px) {
+
+    .row {
+      flex-wrap: wrap;
+      
+      .input50 {
+          flex-grow: 1;
+      }
+  }
+
+  
+}
+
+@media (max-width: 800px) {
+  .contact {
+  form {
+    width: 90%;
+  }
+}
+}
